@@ -7,11 +7,9 @@
     "128": "128.png"
   },
   "permissions": [
-    "activeTab",
     "offscreen",
     "tabCapture"
   ],
-  "host_permissions": ["<all_urls>"],
   "action": {
     "default_popup": "popup.htm"
   }
