@@ -26,13 +26,13 @@
         source.connect(gainNode);
         gainNode.connect(panNode);
         panNode.connect(context.destination);
-        (audioNode = audioNodes[tabId] = [gainNode.gain, panNode.pan]);
+        audioNode = audioNodes[tabId] = [gainNode.gain, panNode.pan];
         e.length > 2 && (
           typeof e[2] == "number"
             ? audioNode[0].value = e[2]
             : audioNode[1].value = +e[2]
         );
-      })
+      });
     }
   });
 })(chrome);
