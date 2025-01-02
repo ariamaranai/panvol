@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "panvol",
+  "version": "0",
+  "description": "Pan volume controller",
+  "icons": {
+    "128": "128.png"
+  },
+  "permissions": [
+    "activeTab",
+    "offscreen",
+    "tabCapture"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_popup": "popup.htm"
+  }
+}
