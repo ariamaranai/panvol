@@ -7,7 +7,7 @@ chrome.runtime.getContexts({}).then(async contexts => {
     await chrome.tabCapture.getMediaStreamId();
 
   contexts.length < 2
-    ? await chrome.offscreen.createDocument({
+    ? chrome.offscreen.createDocument({
         justification: "",
         reasons: ["USER_MEDIA"],
         url: "offscreen.htm"
