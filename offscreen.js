@@ -1,5 +1,5 @@
 (chrome => {
-  let audioNodes = new Map;
+  let audioNodes = {};
   chrome.runtime.onMessage.addListener(e => {
     let tabId = e[0];
     let streamId = e[1];
