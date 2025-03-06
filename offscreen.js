@@ -1,4 +1,4 @@
-(chrome => {
+{
   let audioNodes = {};
   chrome.runtime.onMessage.addListener(e => {
     let tabId = e[0];
@@ -35,4 +35,4 @@
       });
     }
   });
-})(chrome);
+}
