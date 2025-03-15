@@ -23,7 +23,7 @@
           audioNode = audioNodes[e[0]] = [gainNode.gain, panNode.pan];
           e.length > 2
             ? audioNode[e[3]].value = e[2]
-            : r(0)
+            : r(0);
         }).catch(() => 0);
       return !0
   });
