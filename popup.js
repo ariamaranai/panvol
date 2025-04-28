@@ -3,9 +3,8 @@ chrome.runtime.getContexts({}, contexts =>
     chrome.tabCapture.getCapturedTabs(async result => {
       let tabId = tabs[0].id;
       let streamId = result.find(v => v.tabId == tabId) || await chrome.tabCapture.getMediaStreamId();
-      let body = document.body;
-      let vol = body.firstChild.lastChild;
-      let pan = body.lastChild.lastElementChild;
+      let vol = document.body.firstElementChild;
+      let pan = vol.nextElementSibling;
 
       contexts.length < 2
         ? chrome.offscreen.createDocument({
