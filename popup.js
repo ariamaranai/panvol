@@ -9,11 +9,11 @@ chrome.runtime.getContexts({}, contexts =>
       contexts.length < 2
         ? chrome.offscreen.createDocument({
           justification: "",
-          reasons: ["USER_MEDIA"],
+          reasons: ["BLOBS"],
           url: "offscreen.htm"
         })
         : chrome.runtime.sendMessage(streamId, m => m && (vol.value = m[0], pan.value = m[1]));
-      
+
       vol.oninput = e => chrome.runtime.sendMessage([tabId, streamId, +e.target.value, 0]);
       pan.oninput = e => chrome.runtime.sendMessage([tabId, streamId, +e.target.value, 1]);
     });
