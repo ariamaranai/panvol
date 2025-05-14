@@ -3,11 +3,14 @@
   chrome.runtime.onConnect.addListener(p =>
     p.onMessage.addListener((m, p) => {
       let audioNode = audioNodes[m[0]];
+      let len = m.length;
       audioNode
-        ? m.length > 2
-          ? audioNode[m[3]].value = m[2]
+        ? len > 2
+          ? len > 3
+            ? audioNode[m[3]].value = m[2]
+            : audioNode[audioNode[0].value = 1].value = 0
           : p.postMessage([audioNode[0].value, audioNode[1].value])
-        : navigator.mediaDevices.getUserMedia({
+        : len > 3 && navigator.mediaDevices.getUserMedia({
             audio: {
               mandatory: {
                 chromeMediaSource: "tab",
@@ -22,7 +25,7 @@
             gainNode.connect(panNode);
             panNode.connect(context.destination);
             audioNode = audioNodes[m[0]] = [gainNode.gain, panNode.pan];
-            m.length > 2
+            len > 3
               ? audioNode[m[3]].value = m[2]
               : p.postMessage(0);
           }).catch(() => 0);

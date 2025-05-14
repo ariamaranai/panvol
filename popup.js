@@ -16,9 +16,10 @@ chrome.runtime.getContexts({}, contexts =>
       init || (
         p.onMessage.addListener(m => m && (vol.value = m[0], pan.value = m[1])),
         p.postMessage([tabId, streamId])
-      )
+      );
       vol.oninput = e => p.postMessage([tabId, streamId, +e.target.value, 0]);
       pan.oninput = e => p.postMessage([tabId, streamId, +e.target.value, 1]);
+      pan.nextSibling.onclick = () => p.postMessage([tabId, streamId, (vol.value = 1, pan.value = 0)]);
     })
   })
 );
