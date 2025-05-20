@@ -1,5 +1,5 @@
 chrome.runtime.getContexts({}, contexts =>
-  chrome.tabs.query({ active: !0, currentWindow: !0 }, tabs => {
+  chrome.tabs.query({ active: !0, currentWindow: !0 }, tabs =>
     chrome.tabCapture.getCapturedTabs(async result => {
       let tabId = tabs[0].id;
       let streamId = result.find(v => v.tabId == tabId) || await chrome.tabCapture.getMediaStreamId();
@@ -21,5 +21,5 @@ chrome.runtime.getContexts({}, contexts =>
       pan.oninput = e => p.postMessage([tabId, streamId, +e.target.value, 1]);
       pan.nextSibling.onclick = () => p.postMessage([tabId, streamId, (vol.value = 1, pan.value = 0)]);
     })
-  })
+  )
 );
