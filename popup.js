@@ -12,7 +12,7 @@ chrome.runtime.getContexts({}, contexts =>
         reasons: ["BLOBS"],
         url: "offscreen.htm"
       });
-      let p = await chrome.runtime.connect();
+      let p = chrome.runtime.connect();
       init || (
         p.onMessage.addListener(m => m && (vol.value = m[0], pan.value = m[1])),
         p.postMessage([tabId, streamId])
