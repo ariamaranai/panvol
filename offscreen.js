@@ -2,8 +2,8 @@
   let audioNodes = {};
   chrome.runtime.onConnect.addListener(p =>
     p.onMessage.addListener((m, p) => {
-      let audioNode = audioNodes[m[0]];
       let len = m.length;
+      let audioNode = audioNodes[m[0]];
       audioNode
         ? len > 2
           ? len > 3
