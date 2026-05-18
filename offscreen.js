@@ -4,7 +4,7 @@
     p.onMessage.addListener((m, p) => {
       let len = m.length;
       let audioNode = audioNodes[m[0]];
-      audioNode
+      return audioNode
         ? len > 2
           ? len > 3
             ? audioNode[m[3]].value = m[2]
