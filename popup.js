@@ -1,19 +1,17 @@
-chrome.runtime.getContexts({}, contexts =>
+chrome.offscreen.hasDocument(hasDocument =>
   chrome.tabs.query({ active: !0, currentWindow: !0 }, tabs =>
     chrome.tabCapture.getCapturedTabs(async result => {
       let tabId = tabs[0].id;
       let streamId = result.find(v => v.tabId == tabId) || await chrome.tabCapture.getMediaStreamId();
       let vol = document.body.firstElementChild;
       let pan = vol.nextElementSibling;
-      let init = contexts.length < 2;
-      init &&
-      await chrome.offscreen.createDocument({
+      hasDocument || await chrome.offscreen.createDocument({
         justification: "",
         reasons: ["BLOBS"],
         url: "offscreen.htm"
       });
       let p = chrome.runtime.connect();
-      init || (
+      hasDocument && (
         p.onMessage.addListener(m => m && (vol.value = m[0], pan.value = m[1])),
         p.postMessage([tabId, streamId])
       );
